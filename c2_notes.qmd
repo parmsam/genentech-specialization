@@ -5,4 +5,154 @@ format: html
 
 **Course from Roche-Genentech on Coursera platform**
 
-# Module 1
+# Week 1: Health Economics
+
+-   Economic evaluation
+    -   Can't afford everything we want
+    -   Decisions to fund a new healthcare intervention influencers
+        -   Economic evaluation
+        -   Clinical data
+        -   Medical need
+        -   Political pressures
+        -   Budget impact
+        -   Ethical considerations
+-   **Comparators**
+    -   Economic evaluation of an intervention (like a new drug) involves comparing the cost and outcomes with a suitable comparator.
+        -   ![](images/economic-eval.png)
+    -   The suitable comparator is the standard treatment in the area.
+        -   This is useful for incremental analysis to determine is the new intervention should replace standard treatment.
+        -   ![](images/incremental-analysis.png)
+    -   Often there is a tradeoff between health outcomes and cost when it comes to value for money.
+-   **Scope of evaluation**
+    -   Before an economic evaluation is carried out, the scope of the study must be defined.
+    -   This means choosing the comparators, perspective for evaluation, and time horizon.
+    -   The length of time horizon depends on when the effects or side effects of intervention occur.
+        -   Typically they use the patient's lifetime.
+    -   ![](images/scope-eval.png)
+- Costs 
+    - Can be split into three categories:
+        - **Direct medical** which is cost of resources in the healthcare sector. Examples inlcude drugs, consumables, doctor and nurse time
+        - **Direct non-medical** which is cost of resources in the other sectors. Examples include social services, transport to and from hospital, and home modifications
+        - **Indirect (productivity)** which is the loss of time by patients or caregivers due to a condition. Examples include work time and leisure time.
+- **Perspecitive taken**
+    - **Society** is the broadest perspective and includes all costs regardless of who incurs them
+    - **Patient, Provider, and Payer perspectives** only include those individual groups
+- **Discounting**
+    - Costs should be discounted to reflect a time preference. People prefer to defer costs and recieve and receive payments sooner rather than later.
+        - You'd rather recieve 10 dollars now then 10 years later.
+    - Discounted costs are expressed in their present day terms. This is called their present value.
+    - Costs occuring in the first arent discounted. However, those in subsequent years are. 
+    - **Discount formula** for year cost: $PV = \frac{C_n}{(1+r)^{y-1}}$
+        - $PV$ is the present value
+        - $C_n$ is the cost in year n
+        - $r$ is the discount rate
+        - $y$ is the year
+    - People also prefer to get health benefits sooner rather than later. However, whether outcomes should be discounted is still debated. The discount rates used are also a topic of debate. However, there is agreement that cost and benefits should be discounted at the same rate.
+
+```{r}
+PV <- function(cost, discount_rate, year) {
+    cost / (1 + discount_rate)^(year - 1)
+}
+total_present_val <- 1000 + PV(1000, 0.05, 2) + PV(1000, 0.05, 3)
+# 10000 + PV(10000, 0.03, 2) + PV(10000, 0.03, 3) 
+```
+
+- Types of analyses
+    - Usually measure health outcomes in monetary or non-monetary terms.
+    - Cost-benefit analysis
+        - Monetary studies often measure people's willingness to pay for health outcomes.
+        - The results are described in the net benefit. This is the difference between the incremental outcome of the intervention and the incremental cost of the intervention.
+        - Cost benefit analysis is preferred. It is good for comparisons. 
+        - However it is difficult to measure people's true willingness to pay.
+    - Cost-consequence analysis
+        - This lists all the costs and outcomes of an intervention. It is useful for decision makers who want to see all the costs and outcomes of an intervention. 
+    - Cost-minimization analysis
+        - This is used when the outcomes of two interventions are the same. It is used to compare the costs of two interventions.
+        - This is rare because outcomes are usually different.
+- Cost effectiveness and utility analyses
+    - Express outcomes as a single clinical measure. 
+    - In cost effectiveness analysis, the outcome is expressed as a natural unit. For examples lifes saved, life years gained, and relapses avoided.
+    - In utility analysis, the outcome is also expressed as a single general outcome measure. This is most often the **quality adjusted life years** (QALY) but others include **disability adjusted life years** (DALY) and **healthy years equivalent** (HYE).
+- **QALYs**
+    - Calculated by taking duration of life and weighting it with quality of life called **utility**.
+    - **Utility** is measured on a scale from 0 to 1. 0 is death and 1 is perfect health.
+- **ICER**
+    - Incremental cost effectiveness ratio
+    - Calculated by taking the difference in costs (incremental cost) and dividing by the difference in outcomes (incremental outcome).
+    - You want to know how much it costs to get an additional unit of health.
+    - ICER = $\frac{inc\ cost}{inc\ outcome}=\frac{C_1 - C_0}{E_1 - E_0}$
+        - $C_1$ is the cost of the new intervention
+        - $C_0$ is the cost of the standard intervention
+        - $E_1$ is the outcome of the new intervention
+        - $E_0$ is the outcome of the standard intervention
+    - The **cost-effectiveness threshold** is the maximum amount of money that a decision maker is willing to pay for an additional unit of health. If below this threshold, the intervention is considered cost-effective.
+- Other decision elements
+    - In general, decision-making bodies do not explicitly state a cost effectiveness threshold. 
+        - Their decisions are subject to other influences. Such as the burden of disease and the availability or absence of alternative treatments.
+
+# Week 2: Health Measurements and QALYs
+
+- Definition of Health and Patient Reported Outcomes
+    - **Health** as a state of complete physical, mental, and social well-being and not merely the absence of disease or infirmity.
+    - **Patient reported outcomes** are any report of the status of a patient's health condition that comes directly from the patient, without interpretation of the patient's response by a clinician or anyone else.
+        - Examples include health related quality of life, conveniance, symptoms, and treatment preferences.
+- Quality of life measurement
+    - health related quality of life is helpful when measuring chronic disease, improvement in function expected, and when adverse events have no long term effects.
+    - It can be used to support licensing apps, pricing and reimbursement arguments, and to marketing activities
+- Health related quality of life instruments
+    - clinical
+        - profile-based instruments
+            - generic
+            - specific
+    - economic
+- **Utility**
+    - the strength of preference for an outcome or a health state
+    - measured from 0 to 1 where 0 is death and 1 is perfect health
+    - estimating utility
+        - **visual analog scale** (direct)
+            - 0 to 100 visual scale with scale markers
+            - different states are ranking on the scale
+            - however, they're suscepticle to biases
+                - end of scale bias: people tend to avoid the end of the scale 
+                - spacing out bias: people tend to use the whole scale
+        - **standard gamble** (indirect)
+            - choose between living with that health state with certainty or taking a gamble
+            - probability in the gambles vary until the person is indifferent between the two
+            - however requires alot of effort and many participants might not related to probabilities
+        - **time tradeoff** (indirect)
+            - choose between two lives
+                - for example living on dialysis for 20 years or perfect health for a shorter life span
+                - the length of life in perfect health is varied until the person is indifferent between the two
+                - the utility is the length of time in perfect health divided by the length of time in the health state after the tradeoff process is complete
+- Valuation techniques
+- **Preference (or utility) based instruments**
+    - Most commonly generic such as **EQ5D**
+    - Directly measure patient preferences for health states or health related quality of life and infer utility using a predefined tariff
+- **QALYs**
+    - Aim to capture health outcomes by combining duration and quality of life
+    - Calculated by multiplying the utility of that health state by the time spent in a health state
+
+# Week 3: Health Economic Modeling
+
+- Decision modeling
+    - tracks the course of a disease and the impact of interventions on the disease in outcome costs
+    - local adaptation is a factor to consider since the model may not be applicable to all settings
+    - two common models are decision trees and Markov models
+- Decision trees
+    - after the first step of identify and bounding the problem
+    - a decision tree structures the problem
+    - it is build up of nodes and branches
+        - nodes are decision points
+        - branches are the possible outcomes
+        - terminal nodes are the final outcomes
+    - after the tree is built, the probabilities and costs or payoffs are assigned to the each path and the payoff is calculated by summing the results returning the cost and QALYs
+- Markov models
+    - Useful when timing is important or patients move in and out of health states
+    - Three states could be well, sick, and dead
+        - transitions or cycles between states are determined by transition probabilities 
+    - The Markovian assumption is that the future is independent of the past. It only depends on the current state.
+- Sensitivity analysis
+    - involves varying parameters in a plausible range and reculating the model results
+    - the plausible range is determined via a literature review, expert opinion or confidence interval
+    - there are deterministic methods where the model is run multiple times with different parameter values in a univariate or multivariate fashion
+    - there are also probabilistic methods where the model is run multiple times with different parameter values sampled from a distribution
