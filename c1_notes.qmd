@@ -94,7 +94,10 @@ format: html
     -   define.XML
         -   Standard layout for programing specifications
     -   Study data reviewer’s guide (SDRG)
-    -   Analysis data reviewer’s guide (ADRG) \## Lesson 2: Quality assurance
+    -   Analysis data reviewer’s guide (ADRG) 
+
+## Lesson 2: Quality assurance
+```
     -   ICH GCP
     -   QA
         -   Prevent mistakes
@@ -147,6 +150,7 @@ format: html
         -   Treatment info
     -   Access reports
         -   Who had access, when, and to which data
+```
 
 # Module 2
 
