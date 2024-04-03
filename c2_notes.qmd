@@ -1,0 +1,6 @@
+---
+title: "Notes on Making Data Science Work for Clinical Reporting"
+format: html
+---
+
+Course from Roche-Genentech on Coursera platform

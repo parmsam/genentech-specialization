@@ -1,0 +1,323 @@
+---
+title: "Notes on Making Data Science Work for Clinical Reporting"
+format: html
+---
+
+**Course from Roche-Genentech on Coursera platform**
+
+# Module 1
+
+-   What are clinical trials for?
+    -   Demonstrate drug is safe and effective
+    -   Companies must provide sufficient evidence
+    -   Evidence must be high quality and follow best practices
+-   Phases
+    -   Phase 1
+        -   10-20 ppl
+        -   First in patients
+        -   Focused mainly on safety
+    -   Phase 2
+        -   100 ppl
+        -   Most study side effects
+        -   Determines best dose
+    -   Phase 3
+        -   Demonstrates drug efficacy
+        -   Fuller safety profile
+        -   Preparation for drug to go to market
+-   Standards
+    -   Evidence must be submitted to drug authorities
+    -   Evidence must health authorities standards
+    -   Must submit our analysis plan in advance
+    -   Audit trail must demonstrate that we followed our plan correctly
+-   Open and inner source
+    -   Using open source tool and making our own code open source
+        -   Gives access to latest developments when they happen
+        -   Matches our toolbase to what talent we recruit are using
+        -   Makes code better and improves our profile
+        -   Most clinical programming is “pre-competitive”
+        -   Enables cross-industry collaboration
+            -   Leads to better outcomes for ourselves and our patients
+-   Transparency vs reproducibility
+-   CDISC Standards
+    -   CDASH for CRFs
+    -   SDTM for data collected
+        -   For clinical trial raw data
+        -   Contains data as collected
+    -   SEND for non clinical data collected
+    -   ADAM for processed study data
+        -   Processed for analysis
+        -   Is very flexible compared to SDTM which has way more versions
+-   Dictionaries
+    -   MedDRA
+        -   Standard dictionary for medical conditions, events, and procedures
+        -   Maintained by ICH and up-versioned twice a year
+        -   Five-level hierarchy
+            -   System Organ Class (SOC)
+            -   High-Level Group Terms (HLGT)
+            -   High-Level Terms (HLT)
+            -   Preferred Terms (PT)
+            -   Lowest Level Terms (LLT)
+        -   MedDRA dictionary includes Standardized MedDRA Queries (SMQs), which are groupings of terms that relate to a defined medical condition or area of interest, but live outside the MedDRA hierarchy
+        -   Individual cases are usually coded for data entry at the most specific (i.e. LLT) level. Tables and listings are usually provided at the PT level. The higher levels (HLT, HLGT and SOC), as well as SMQs, are used for searching and for organizing and subtotalling results.
+        -   The MedDRA dictionary is multiaxial: One PT may be associated with more than one HLT.
+    -   WHO drug dictionary
+        -   Standard dictionary for pharmaceutical agents
+        -   Maintained by UMC on behalf of WHO
+        -   Continuously updated
+        -   Drug codes in the WHO Drug Dictionary consist of 11 characters (alphanumeric code) in three parts:
+            -   Drug Record Number (DrugRecNo) - 6 characters
+            -   Sequence number 1 (Seq1) - 2 characters
+            -   Sequence number 2 (Seq2) - 3 characters
+            -   DrgRecNo uniquely identifies the active substance or group of active substances.
+                -   Seq1 is used to uniquely identify different variations (e.g. salts and esters), plant parts and extraction methods (01 indicates the base ingredient(s) without salt specified).
+                -   Seq2 is used to differentiate trade names and synonyms (001 indicates the preferred name).
+        -   WHODrug records are associated with at least one code from WHO’s Anatomical Therapeutic Chemical (ATC) Classification System. This allows to group drugs by anatomical target region, therapeutic methods and use cases and chemical properties.
+        -   
+-   Coding standards
+    -   Programming standard
+        -   Every company has at least one statical computing environment (SCE) using SAS
+    -   Datafile standard
+        -   Most companies use proprietary SAS v7 dataset (.sas7bdat)
+        -   Most regulators agencies require SAS v5 transport file (.xpt) format
+-   Important docs
+    -   Statistical analysis plan
+        -   Based on study protocol
+        -   Focused on statistical methodology
+        -   Regulated
+    -   Programing specification
+        -   Based on SAP
+        -   Provides details on TLFs
+        -   Focused on programming details
+        -   Not regulated
+    -   Annotated CRF (aCRF)
+        -   Provides links between CRF and SDTM data
+    -   define.XML
+        -   Standard layout for programing specifications
+    -   Study data reviewer’s guide (SDRG)
+    -   Analysis data reviewer’s guide (ADRG) \## Lesson 2: Quality assurance
+    -   ICH GCP
+    -   QA
+        -   Prevent mistakes
+        -   Reduce inefficiencies
+        -   increase reliability and trustworthiness
+    -   QC
+        -   Clinical monitoring
+            -   Performed by CRA at investigator sites
+            -   Checks that study protocols are executed as intended
+            -   Checks that site processes results in accurate data capture
+                -   If check fails, retraining is initiated
+                -   Focuses on trial subjects safety
+            -   Traditional goal is 100% source data verification
+        -   Analysis programs
+            -   Code review
+            -   Double programming
+        -   Data quality checks
+            -   Performed remotely by sponsor
+            -   Checks for technical conformance and plausibility
+            -   If check fails, then query is initiated
+            -   Focuses on data quality
+            -   Traditional goal is 100% accurate and format-compliant
+        -   Documentation
+            -   High level overview of the activities that are performed
+        -   Audit trail
+            -   Electronic records of actions performed on computer system
+    -   Qualification
+        -   Process of qualifying a system for GCP-regulated purposes
+        -   Divided into design qualification, installation qualification, operational qualification, and performance qualification
+    -   Validation
+        -   Process of creating documentation that action carried out in testing as expected
+        -   Confirmation that activity carried out on a system produced the desired result
+    -   SOPs
+        -   Can think of them as detailed written instructions
+        -   Usually plaintext but might be have flowcharts
+        -   They capture the best practice, achieve uniform performance, avoid miscommunication, serve as vehicle for continuous process improvement, and allow for on-demand instruction \## Lesson 3: Data Access Restrictions
+    -   Clinical trial data is a key asset
+    -   Pseudonymization
+        -   personally identifiable information fields within a data record are replaced by one or more artificial identifiers, or pseudonyms
+    -   Anonymization
+        -   Removing variables
+        -   Removing values or blanking out
+        -   Replacing more precise values with more general categories
+        -   Replacing personal identifiers with random identifiers
+    -   FSPs - Functional service providers
+    -   CROs - contract research organizations
+    -   Unblinding
+        -   Non-treatment info
+        -   Dummy treatment info is used to produce deliverables
+        -   Treatment info
+    -   Access reports
+        -   Who had access, when, and to which data
+
+# Module 2
+
+## Lesson 2: Agile
+
+```         
+- Agile is a mindset
+    - Values and principles contained in agile manifesto and in the 12 principles
+    - uncovering - not one size fits all solutions
+    - better - means a growth mindset that looks for improvement
+        - requires openness to discuss what is not working
+    - doing it
+    - helping others do it
+- Agile principles
+    - highest priority is to satisfy customer through early and continuous delivery of valuable software
+- Focus on the customer through early and continuous delivery of software
+- DevOps
+    - Set of tools and practices specific to software development that stem from agile
+    - Focus is to increase efficiency between the Dev (Software development) and Ops (IT) with a goal of continuous deliver and improvement
+- DevOps in Clinical Reporting
+    - Are all dependencies in production?
+    - Was all QC completed and successful?
+    - Is all documentation complete?
+    - Was the transfer to eDMS complete and successful?
+- Act-Inspect-Adapt Framework
+- Frameworks to scale agile
+    - Often use scrum as basis for team organization
+    - SAFe (Scaled agile framework) is the most popular 
+    - Do an Agile Culture Health Check
+- Ask yourself two questions everyday to adopt an Agile mindset in your life
+    - What did I learn today?
+    - What is standing in my way?
+```
+
+## Lesson 3: Version Control and Git
+
+```         
+- Branching
+    - git checkout -b testing
+    - git merge testing
+- Git workflows
+    - Feature branches
+        - Naming conventions
+            - <issue_number>_<description>
+    - Feature branch workflow
+        - Don’t make changes on master branch
+        - Every commit on the master branch is a result of a merge request
+        - The merge requests come from feature branches
+    - Git flow workflow
+        - Main branch and a long lived development branch
+        - Main branch is locked and only updated via the development branches merge requests
+        - Still have feature branches which are merged into the dev branch
+        - This has a release model where we only merge into main when we’re ready for release
+- Which workflow works best for clinical reporting?
+    - Make your own workflow and adapt it to your problem. No one size fits all solution.
+    - It depends on the study and the challenges you have.
+- Things to worry about
+    - R version
+    - Operating system
+    - Underlying dependencies
+- Docker is a good solution to those worries
+```
+
+## Lesson 5:
+
+```         
+- Inner Sourcing
+    - Use of open source software development practices and development of open-source like culture within orgs 
+    - May still develop internal, proprietary software but opens up its development
+- Open Sourcing
+    - Things to consider
+        - Can we indeed open source it?
+        - What about IP?
+        - What Open Source license should we use?
+        - Is the code mature enough?
+        - Or we might like to share an experimental work?
+    - Potential benefits
+        - Increase impact of code and our work
+        - Set standards in the industry
+        - Improving and sharing pre-competitive solutions that help us all
+        - Collaborating on things that are not worth competing for
+        - Gathering feedback from other users and developers
+        - More testing of our code by a wider community and a higher chance of finding bugs more quickly
+        - Getting more direct contributions on our codebase from other developers
+```
+
+## Lesson 6: Core principles for package development
+
+```         
+- Package development
+    - Benefits
+        - Reusability - for users, developers, and future me
+        - Allow for encapsulation by hiding complexity (internal functions) and providing a stable interface (external functions)
+- Other dev tools
+    - {usethis} for automating repetitive tasks
+    - {spelling} for spell checking
+    - {covr} for tracking test coverage
+    - {lintr} for static code analysis
+    - {cli} for nice looking CLIs 
+- Code comments are not recommended for documentation
+    - Write code in a way that doesn’t require additional documentation
+- Structural decomposition of code
+    - Break code into functions
+    - Follow DRY principle
+    - Follow Single-Responsibility-Principle (SRP) 
+        - Avoid side effects
+- Recommended naming and style conventions
+    - Use snake case for function names and arguments
+        - Additionally use verb_name pattern
+- Smelly code
+- Test driven development (TDD)
+    - Start with a new failing test
+    - Write code that passes the new test
+    - Refactor the code and tests
+    - Repeat all the steps
+    - You fail fast
+        - Immediately see and resolve errors
+## Lessons for writing robust statistical software
+    - Choose the right method and understand them
+    - Solve the core implementation problem with prototype code
+        - Rmarkdown doc works well
+    - Spend enough time on planning the design of the R-package
+    - Assume that your R-package will be evolving over time
+    - Avoid too long function and too many arguments in a function
+```
+
+## Lesson 7: CI/CD for R packages
+
+```         
+- Key components 
+    - Dependency management
+        - Installing dependencies, both system/OS-level and R packages
+    - Static code analysis
+        - Linting, code styling, and spell checks
+    - Testing
+        - R CMD Build check and code coverage via {covr}
+    - Documentation
+        - Autogenerated via roxygen2 and pkgdown
+    - Releases and deployments
+        - Change log via news.md
+        - Release artifacts
+        - Publishing via CRAN submission form
+```
+
+## Lesson 8: Risk and Package quality
+
+```         
+- Adding one package usually means adding several dependencies
+- Are all packages created equally?
+    - Consider the following: the maintainer, source, and other findings
+- Also consider package governance
+- Open source lifecycles, support, and project health
+    - Consider how many contributors, and how long package has been released
+    - Is code hosted on public version controlled repo?
+    - Is project stale and if so is it stable or abandoned?
+    - How large is the community contributing code and interacting with issues?
+        - Is it a one-person codebase? If so, who is the person?
+        - Who’s involved in the package? Is the copyright held by the company? Have they talked about it publicly?
+        - Where is the package used? What stage of lifecycle is it in?
+            - Experimental, stable, deprecated, superseded?
+            - What about the r version? Is it <v1.0 or >=v1.0?
+    - What is the general trend in how people are interacting with the codebase?
+- Genentech’s approach to risk mitigation for R packages involves
+    - Human assessment of package  documentation and unit test scope
+        - What the package claims to do via Rd documentation
+        - What the package tests via testthat unit tests
+    - Reporting via CI/CD Github Actions
+- Checklist for reviewing a package
+    - [ ] Does it provide the required functionality
+    - [ ] Does it work reliably?
+    - [ ] Does the code look robust and is it well tested?
+    - [ ] Is it well documented?
+    - [ ] Who are the authors and are they responsive?
+```
