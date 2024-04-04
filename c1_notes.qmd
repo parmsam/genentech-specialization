@@ -5,7 +5,9 @@ format: html
 
 **Course from Roche-Genentech on Coursera platform**
 
-# Module 1
+# Week 1
+
+## Intro to Data Science in Clinical Reporting
 
 -   What are clinical trials for?
     -   Demonstrate drug is safe and effective
@@ -37,6 +39,9 @@ format: html
         -   Most clinical programming is “pre-competitive”
         -   Enables cross-industry collaboration
             -   Leads to better outcomes for ourselves and our patients
+
+## Burden of being faultless and transparent
+
 -   Transparency vs reproducibility
 -   CDISC Standards
     -   CDASH for CRFs
@@ -96,7 +101,7 @@ format: html
     -   Study data reviewer’s guide (SDRG)
     -   Analysis data reviewer’s guide (ADRG) 
 
-## Lesson 2: Quality assurance
+## Quality assurance
 ```
     -   ICH GCP
     -   QA
@@ -151,10 +156,9 @@ format: html
     -   Access reports
         -   Who had access, when, and to which data
 ```
+# Week 2
 
-# Module 2
-
-## Lesson 2: Agile
+## Agile
 
 ```         
 - Agile is a mindset
@@ -185,7 +189,7 @@ format: html
     - What is standing in my way?
 ```
 
-## Lesson 3: Version Control and Git
+## Version Control and Git
 
 ```         
 - Branching
@@ -213,8 +217,9 @@ format: html
     - Underlying dependencies
 - Docker is a good solution to those worries
 ```
+# Week 3
 
-## Lesson 5:
+## InnerSource and OpenSource
 
 ```         
 - Inner Sourcing
@@ -237,7 +242,7 @@ format: html
         - Getting more direct contributions on our codebase from other developers
 ```
 
-## Lesson 6: Core principles for package development
+## Core principles for package development
 
 ```         
 - Package development
@@ -277,7 +282,7 @@ format: html
     - Avoid too long function and too many arguments in a function
 ```
 
-## Lesson 7: CI/CD for R packages
+## CI/CD for R packages
 
 ```         
 - Key components 
@@ -294,8 +299,9 @@ format: html
         - Release artifacts
         - Publishing via CRAN submission form
 ```
+# Week 4: Assessing and managing risk
 
-## Lesson 8: Risk and Package quality
+## Risk and Package quality
 
 ```         
 - Adding one package usually means adding several dependencies
